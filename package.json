@@ -1,0 +1,24 @@
+{
+  "name": "fold",
+  "version": "0.0.1",
+  "description": "Collection of useful functions using fold/reduce pattern",
+  "license": "MIT",
+  "repository": "oss6/fold",
+  "author": {
+    "name": "Ossama Edbali",
+    "email": "ossedb@gmail.com",
+    "url": "ossamaedbali.wordpress.com"
+  },
+  "files": [
+    "fold.js"
+  ],
+  "keywords": [
+    "fold",
+    "reduce",
+    "pattern",
+    "functional"
+  ],
+  "devDependencies": {
+    "mocha": "0.3.x"
+  }
+}
