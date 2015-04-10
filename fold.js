@@ -22,10 +22,6 @@ if(typeof exports === 'undefined'){
         return a + b;
     };
 
-    $f.test = function () {
-        return 'hello';
-    };
-
     $f.foldL = function _foldL (arr, f, init) {
         if (isEmpty(arr)) {
             return init;
@@ -36,16 +32,26 @@ if(typeof exports === 'undefined'){
         }
     };
 
-    $f.size = function (arr) {
+    $f.foldR = function _foldR (arr, f, init) {
+        if (isEmpty(arr)) {
+            return init;
+        }
+        else {
+            var p = hdtl(arr);
+            return _foldR(p.tl, f, f(init, p.hd));
+        }
+    };
 
+    $f.size = function (arr) {
+        return $f.foldL(arr, function (a, x) { return a + 1; }, 0);
     };
 
     $f.sum = function (arr) {
-        return this.foldL(arr, add, 0);
+        return $f.foldL(arr, add, 0);
     };
 
-    $f.forEach = function (arr) {
-
+    $f.forEach = function (arr, f) {
+        return $f.foldR(arr, function (a, x) { f(x); }, undefined)
     };
 
     $f.map = function (arr) {
@@ -57,3 +63,8 @@ if(typeof exports === 'undefined'){
     };
 
 })(typeof exports === 'undefined'? window.fold = {} : exports);
+
+var f = require('./fold');
+f.forEach([1, 2, 3], function (x) {
+    console.log(x);
+});

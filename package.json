@@ -12,6 +12,9 @@
   "files": [
     "fold.js"
   ],
+  "scripts": {
+    "test": "make test"
+  },
   "keywords": [
     "fold",
     "reduce",
@@ -19,6 +22,6 @@
     "functional"
   ],
   "devDependencies": {
-    "mocha": "0.3.x"
+    "mocha": "~2.2.4"
   }
 }
