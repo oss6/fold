@@ -10,7 +10,7 @@ if(typeof exports === 'undefined'){
         return typeof arr === 'undefined' || arr.length === 0;
     };
 
-    var hdtl = function (arr) {
+    var destructor = function (arr) {
         // Check if array is not empty
         return {
             'hd': arr[0],
@@ -35,7 +35,7 @@ if(typeof exports === 'undefined'){
             return init;
         }
         else {
-            var p = hdtl(arr);
+            var p = destructor(arr);
             return f(_foldL(p.tl, f, init), p.hd);
         }
     };
@@ -45,7 +45,7 @@ if(typeof exports === 'undefined'){
             return init;
         }
         else {
-            var p = hdtl(arr);
+            var p = destructor(arr);
             return _foldR(p.tl, f, f(init, p.hd));
         }
     };
@@ -80,19 +80,29 @@ if(typeof exports === 'undefined'){
     };
 
     $f.drop = function (arr, n) {
+        var count = 1;
+
         return $f.foldR(arr, function (a, x) {
-            var acc = a.acc,
-                count = a.count;
-
             if (count % n !== 0) {
-                acc.push(x);
+                a.push(x);
             }
+            count++;
 
-            return {
-                'acc': acc,
-                'count': count + 1
-            };
-        }, { 'acc': [], 'count': 1 }).acc; // Get just the accumulator (no count)
+            return a;
+        }, []);
+    };
+
+    $f.take = function (arr, n) {
+        var count = 1;
+
+        return $f.foldR(arr, function (a, x) {
+            if (count % n === 0) {
+                a.push(x);
+            }
+            count++;
+
+            return a;
+        }, []);
     };
 
     $f.partition = function (arr, f) {
@@ -118,11 +128,41 @@ if(typeof exports === 'undefined'){
         }, []);
     };
 
-    
+    $f.elimConsec = function (arr) {
+        if (isEmpty(arr)) {
+            return arr;
+        }
+
+        var cur = destructor(arr).hd,
+            count = 0;
+
+        return $f.foldR(arr, function (a, x) {
+            if (count === 0) {
+                a.push(x);
+            }
+            else {
+                if (x !== cur) {
+                    a.push(x);
+                }
+            }
+
+            cur = x;
+            count++;
+            return a;
+        }, []);
+    };
+
+    $f.max = function (arr) {
+
+    };
+
+    $f.min = function (arr) {
+
+    };
 
 })(typeof exports === 'undefined'? window.fold = {} : exports);
 
 var f = require('./fold');
-var n = f.replicate([1, 2, 3, 4], 3);
+var n = f.elimConsec([]);
 
 console.log(n);
