@@ -220,8 +220,32 @@ if(typeof exports === 'undefined'){
         }, false);
     };
 
+    $f.negateAll = function (arr) {
+        return $f.map(arr, function (x) {
+            return -x;
+        });
+    };
+
+    $f.flatten = function (arr) {
+        return $f.foldR(arr, function (a, x) {
+
+        });
+    };
+
+    $f.and = function (arr) {
+        return $f.foldL(arr, function (a, x) {
+            return a && x;
+        }, true);
+    };
+
+    $f.or = function (arr) {
+        return $f.foldL(arr, function (a, x) {
+            return a || x;
+        }, true);
+    };
+
 })(typeof exports === 'undefined'? window.fold = {} : exports);
 
 var f = require('./fold');
-var n = f.member([3, 1, 5, 6], 5);
+var n = f.negateAll([3, 1, 5, 6]);
 console.log(n);
