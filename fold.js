@@ -199,8 +199,19 @@ if(typeof exports === 'undefined'){
         }, []);
     };
 
+    $f.any = function (arr, f) {
+        return $f.foldR(arr, function (a, x) {
+            if (!a && f(x)) {
+                a = true;
+            }
+            return a;
+        }, false);
+    };
+
 })(typeof exports === 'undefined'? window.fold = {} : exports);
 
 var f = require('./fold');
-var n = f.reverse([1, 2, 3, 3, 3, 3, 4, 5]);
+var n = f.any([1, 3, 5, 7], function (x) {
+   return x % 2 === 0;
+});
 console.log(n);
