@@ -290,8 +290,17 @@ if(typeof exports === 'undefined'){
         return $f.foldL(arr, insert, []);
     };
 
+    $f.join = function (arr, sep) {
+        var count = 0;
+        sep = sep || ',';
+
+        return $f.foldR(arr, function (a, x) {
+            return count++ > 0 ? a + sep + x : x;
+        }, '');
+    };
+
 })(typeof exports === 'undefined'? window.fold = {} : exports);
 
 var f = require('./fold');
-var n = f.insertionSort([6, 7, 2, 9, 1]);
+var n = f.join([3, 4, 7, 8, 1]);
 console.log(n);
