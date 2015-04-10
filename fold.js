@@ -22,6 +22,14 @@ if(typeof exports === 'undefined'){
         return a + b;
     };
 
+    var fill = function (e, n) {
+        var arr = [];
+        for (var i = 0; i < n; i++) {
+            arr.push(e);
+        }
+        return arr;
+    };
+
     $f.foldL = function _foldL (arr, f, init) {
         if (isEmpty(arr)) {
             return init;
@@ -102,13 +110,19 @@ if(typeof exports === 'undefined'){
         }, {'T': [], 'F': []});
     };
 
+    $f.replicate = function (arr, n) {
+        return $f.foldR(arr, function (a, x) {
+            a.push(fill(x, n));
+
+            return a;
+        }, []);
+    };
+
     
 
 })(typeof exports === 'undefined'? window.fold = {} : exports);
 
 var f = require('./fold');
-var n = f.partition([1, 2, 3, 4, 5], function (x) {
-    return x % 2 === 0;
-});
+var n = f.replicate([1, 2, 3, 4], 3);
 
 console.log(n);
