@@ -186,16 +186,21 @@ if(typeof exports === 'undefined'){
         return arr.length > 0 ? $f.sum(arr) / arr.length : null;
     };
 
-    // let count l e = List.fold l ~init:0 ~f:(fun a b -> if b = e then a + 1 else a + 0);;
     $f.count = function (arr, e) {
         return $f.foldR(arr, function (a, x) {
             return x === e ? a + 1 : a;
         }, 0);
     };
 
+    $f.reverse = function (arr) {
+        return $f.foldL(arr, function (a, x) {
+            a.push(x);
+            return a;
+        }, []);
+    };
 
 })(typeof exports === 'undefined'? window.fold = {} : exports);
 
 var f = require('./fold');
-var n = f.count([1, 2, 3, 3, 3, 3, 4, 5], 6);
+var n = f.reverse([1, 2, 3, 3, 3, 3, 4, 5]);
 console.log(n);
