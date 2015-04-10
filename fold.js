@@ -10,7 +10,12 @@ if(typeof exports === 'undefined'){
         return typeof arr === 'undefined' || arr.length === 0;
     };
 
+    // Array destructor (head and list)
     var dctor = function (arr) {
+        if (isEmpty(arr)) {
+            // throw exception
+        }
+
         // Check if array is not empty
         return {
             'hd': arr[0],
@@ -245,7 +250,3 @@ if(typeof exports === 'undefined'){
     };
 
 })(typeof exports === 'undefined'? window.fold = {} : exports);
-
-var f = require('./fold');
-var n = f.negateAll([3, 1, 5, 6]);
-console.log(n);
