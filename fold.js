@@ -214,17 +214,14 @@ if(typeof exports === 'undefined'){
         return $f.foldL(arr, compose, identity);
     };
 
+    $f.member = function (arr, e) {
+        return $f.foldR(arr, function (a, x) {
+            return x === e ? true : a;
+        }, false);
+    };
+
 })(typeof exports === 'undefined'? window.fold = {} : exports);
 
 var f = require('./fold');
-var f1 = function (x) {
-    return x * x;
-};
-var f2 = function (x) {
-    return x * 2;
-};
-var f3 = function (x) {
-    return x + 1;
-};
-var nf = f.composition([f1, f2, f3]);
-console.log(nf(10));
+var n = f.member([3, 1, 5, 6], 5);
+console.log(n);
