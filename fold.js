@@ -10,6 +10,10 @@ if(typeof exports === 'undefined'){
         return typeof arr === 'undefined' || arr.length === 0;
     };
 
+    var isArray = function (arr) {
+        return Object.prototype.toString.call(arr) === '[object Array]';
+    };
+
     // Array destructor (head and list)
     var dctor = function (arr) {
         if (isEmpty(arr)) {
@@ -42,6 +46,36 @@ if(typeof exports === 'undefined'){
     };
 
     var identity = function (x) { return x; };
+
+    var insert = function _insert (arr, x) {
+        if (isEmpty(arr)) {
+            return [x];
+        }
+        else {
+            var p = dctor(arr),
+                y = p.hd,
+                ys = p.tl,
+                newArr;
+
+            if (x < y) {
+                newArr = [x, y];
+                newArr.pushArray(ys);
+            }
+            else {
+                newArr = [y];
+                newArr.pushArray(_insert(ys, x));
+            }
+
+            return newArr;
+        }
+    };
+
+    Array.prototype.pushArray = function () {
+        var toPush = this.concat.apply([], arguments);
+        for (var i = 0, len = toPush.length; i < len; ++i) {
+            this.push(toPush[i]);
+        }
+    };
 
     // API
 
@@ -107,7 +141,7 @@ if(typeof exports === 'undefined'){
         }, []);
     };
 
-    $f.elimConsec = function (arr) {
+    $f.removeConsecutive = function (arr) {
         if (isEmpty(arr)) {
             return arr;
         }
@@ -152,8 +186,8 @@ if(typeof exports === 'undefined'){
         }, []);
     };
 
-    $f.map_fusion = function (arr, f, g) {
-        return $f.map(arr, compose(f, g));
+    $f.mapFusion = function (arr, fs) {
+        return $f.map(arr, $f.composition(fs));
     };
 
     $f.partition = function (arr, f) {
@@ -239,10 +273,11 @@ if(typeof exports === 'undefined'){
         });
     };
 
-    $f.flatten = function (arr) {
+    $f.flatten = function _flatten (arr) {
         return $f.foldR(arr, function (a, x) {
-
-        });
+            a.pushArray(isArray(x) ? _flatten(x) : x);
+            return a;
+        }, []);
     };
 
     $f.or = function (arr) {
@@ -251,4 +286,12 @@ if(typeof exports === 'undefined'){
         }, true);
     };
 
+    $f.insertionSort = function (arr) {
+        return $f.foldL(arr, insert, []);
+    };
+
 })(typeof exports === 'undefined'? window.fold = {} : exports);
+
+var f = require('./fold');
+var n = f.insertionSort([6, 7, 2, 9, 1]);
+console.log(n);
