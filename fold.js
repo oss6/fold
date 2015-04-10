@@ -51,20 +51,64 @@ if(typeof exports === 'undefined'){
     };
 
     $f.forEach = function (arr, f) {
-        return $f.foldR(arr, function (a, x) { f(x); }, undefined)
+        return $f.foldR(arr, function (a, x) { f(x); }, undefined);
     };
 
-    $f.map = function (arr) {
-
+    $f.map = function (arr, f) {
+        return $f.foldR(arr, function (a, x) {
+            a.push(f(x));
+            return a;
+        }, []);
     };
 
-    $f.filter = function (arr) {
+    $f.filter = function (arr, f) {
+        return $f.foldR(arr, function (a, x) {
+            if (f(x)) {
+                a.push(x);
+            }
 
+            return a;
+        }, []);
     };
+
+    $f.drop = function (arr, n) {
+        return $f.foldR(arr, function (a, x) {
+            var acc = a.acc,
+                count = a.count;
+
+            if (count % n !== 0) {
+                acc.push(x);
+            }
+
+            return {
+                'acc': acc,
+                'count': count + 1
+            };
+        }, { 'acc': [], 'count': 1 }).acc; // Get just the accumulator (no count)
+    };
+
+    $f.partition = function (arr, f) {
+        return $f.foldR(arr, function (a, x) {
+
+            if (f(x)) {
+                a.T.push(x);
+            }
+            else {
+                a.F.push(x);
+            }
+
+            return a;
+
+        }, {'T': [], 'F': []});
+    };
+
+    
 
 })(typeof exports === 'undefined'? window.fold = {} : exports);
 
 var f = require('./fold');
-f.forEach([1, 2, 3], function (x) {
-    console.log(x);
+var n = f.partition([1, 2, 3, 4, 5], function (x) {
+    return x % 2 === 0;
 });
+
+console.log(n);
