@@ -36,6 +36,8 @@ if(typeof exports === 'undefined'){
         };
     };
 
+    var identity = function (x) { return x; };
+
     $f.foldL = function _foldL (arr, f, init) {
         if (isEmpty(arr)) {
             return init;
@@ -208,10 +210,21 @@ if(typeof exports === 'undefined'){
         }, false);
     };
 
+    $f.composition = function (arr) {
+        return $f.foldL(arr, compose, identity);
+    };
+
 })(typeof exports === 'undefined'? window.fold = {} : exports);
 
 var f = require('./fold');
-var n = f.any([1, 3, 5, 7], function (x) {
-   return x % 2 === 0;
-});
-console.log(n);
+var f1 = function (x) {
+    return x * x;
+};
+var f2 = function (x) {
+    return x * 2;
+};
+var f3 = function (x) {
+    return x + 1;
+};
+var nf = f.composition([f1, f2, f3]);
+console.log(nf(10));
