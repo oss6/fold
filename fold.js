@@ -300,7 +300,3 @@ if(typeof exports === 'undefined'){
     };
 
 })(typeof exports === 'undefined'? window.fold = {} : exports);
-
-var f = require('./fold');
-var n = f.join([3, 4, 7, 8, 1]);
-console.log(n);
