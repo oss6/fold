@@ -10,7 +10,7 @@ if(typeof exports === 'undefined'){
         return typeof arr === 'undefined' || arr.length === 0;
     };
 
-    var destructor = function (arr) {
+    var dctor = function (arr) {
         // Check if array is not empty
         return {
             'hd': arr[0],
@@ -30,12 +30,18 @@ if(typeof exports === 'undefined'){
         return arr;
     };
 
+    var compose = function (f, g) {
+        return function (x) {
+            return f(g(x));
+        };
+    };
+
     $f.foldL = function _foldL (arr, f, init) {
         if (isEmpty(arr)) {
             return init;
         }
         else {
-            var p = destructor(arr);
+            var p = dctor(arr);
             return f(_foldL(p.tl, f, init), p.hd);
         }
     };
@@ -45,7 +51,7 @@ if(typeof exports === 'undefined'){
             return init;
         }
         else {
-            var p = destructor(arr);
+            var p = dctor(arr);
             return _foldR(p.tl, f, f(init, p.hd));
         }
     };
@@ -67,6 +73,10 @@ if(typeof exports === 'undefined'){
             a.push(f(x));
             return a;
         }, []);
+    };
+
+    $f.map_fusion = function (arr, f, g) {
+        return $f.map(arr, compose(f, g));
     };
 
     $f.filter = function (arr, f) {
@@ -133,7 +143,7 @@ if(typeof exports === 'undefined'){
             return arr;
         }
 
-        var cur = destructor(arr).hd,
+        var cur = dctor(arr).hd,
             count = 0;
 
         return $f.foldR(arr, function (a, x) {
@@ -153,16 +163,37 @@ if(typeof exports === 'undefined'){
     };
 
     $f.max = function (arr) {
+        if (isEmpty(arr)) {
+            return null;
+        }
 
+        return $f.foldR(arr, function (a, x) {
+            return x > a ? x : a;
+        }, dctor(arr).hd);
     };
 
     $f.min = function (arr) {
+        if (isEmpty(arr)) {
+            return null;
+        }
 
+        return $f.foldR(arr, function (a, x) {
+            return x < a ? x : a;
+        }, dctor(arr).hd);
     };
+
+
 
 })(typeof exports === 'undefined'? window.fold = {} : exports);
 
 var f = require('./fold');
-var n = f.elimConsec([]);
+var double = function (x) {
+    return x * 2;
+};
 
+var plusOne = function (x) {
+    return x + 1;
+};
+
+var n = f.map_fusion([1, 2, 3, 4, 5], double, plusOne);
 console.log(n);
