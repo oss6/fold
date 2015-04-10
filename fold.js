@@ -141,6 +141,104 @@ if(typeof exports === 'undefined'){
         }, []);
     };
 
+    $f.filter = function (arr, f) {
+        return $f.foldR(arr, function (a, x) {
+            if (f(x)) {
+                a.push(x);
+            }
+
+            return a;
+        }, []);
+    };
+
+    $f.flatten = function _flatten (arr) {
+        return $f.foldR(arr, function (a, x) {
+            a.pushArray(isArray(x) ? _flatten(x) : x);
+            return a;
+        }, []);
+    };
+
+    $f.forEach = function (arr, f) {
+        return $f.foldR(arr, function (a, x) { f(x); }, undefined);
+    };
+
+    $f.insertionSort = function (arr) {
+        return $f.foldL(arr, insert, []);
+    };
+
+    $f.join = function (arr, sep) {
+        var count = 0;
+        sep = sep || ',';
+
+        return $f.foldR(arr, function (a, x) {
+            return count++ > 0 ? a + sep + x : x;
+        }, '');
+    };
+
+    $f.map = function (arr, f) {
+        return $f.foldR(arr, function (a, x) {
+            a.push(f(x));
+            return a;
+        }, []);
+    };
+
+    $f.mapFusion = function (arr, fs) {
+        return $f.map(arr, $f.composition(fs));
+    };
+
+    $f.max = function (arr) {
+        if (isEmpty(arr)) {
+            return null;
+        }
+
+        return $f.foldR(arr, function (a, x) {
+            return x > a ? x : a;
+        }, dctor(arr).hd);
+    };
+
+    $f.member = function (arr, e) {
+        return $f.foldR(arr, function (a, x) {
+            return x === e ? true : a;
+        }, false);
+    };
+
+    $f.min = function (arr) {
+        if (isEmpty(arr)) {
+            return null;
+        }
+
+        return $f.foldR(arr, function (a, x) {
+            return x < a ? x : a;
+        }, dctor(arr).hd);
+    };
+
+    $f.negateAll = function (arr) {
+        return $f.map(arr, function (x) {
+            return -x;
+        });
+    };
+
+    $f.or = function (arr) {
+        return $f.foldL(arr, function (a, x) {
+            return a || x;
+        }, true);
+    };
+
+    $f.partition = function (arr, f) {
+        return $f.foldR(arr, function (a, x) {
+
+            if (f(x)) {
+                a.T.push(x);
+            }
+            else {
+                a.F.push(x);
+            }
+
+            return a;
+
+        }, {'T': [], 'F': []});
+    };
+
     $f.removeConsecutive = function (arr) {
         if (isEmpty(arr)) {
             return arr;
@@ -165,50 +263,17 @@ if(typeof exports === 'undefined'){
         }, []);
     };
 
-    $f.filter = function (arr, f) {
-        return $f.foldR(arr, function (a, x) {
-            if (f(x)) {
-                a.push(x);
-            }
-
-            return a;
-        }, []);
-    };
-
-    $f.forEach = function (arr, f) {
-        return $f.foldR(arr, function (a, x) { f(x); }, undefined);
-    };
-
-    $f.map = function (arr, f) {
-        return $f.foldR(arr, function (a, x) {
-            a.push(f(x));
-            return a;
-        }, []);
-    };
-
-    $f.mapFusion = function (arr, fs) {
-        return $f.map(arr, $f.composition(fs));
-    };
-
-    $f.partition = function (arr, f) {
-        return $f.foldR(arr, function (a, x) {
-
-            if (f(x)) {
-                a.T.push(x);
-            }
-            else {
-                a.F.push(x);
-            }
-
-            return a;
-
-        }, {'T': [], 'F': []});
-    };
-
     $f.replicate = function (arr, n) {
         return $f.foldR(arr, function (a, x) {
             a.push(fill(x, n));
 
+            return a;
+        }, []);
+    };
+
+    $f.reverse = function (arr) {
+        return $f.foldL(arr, function (a, x) {
+            a.push(x);
             return a;
         }, []);
     };
@@ -232,71 +297,6 @@ if(typeof exports === 'undefined'){
 
             return a;
         }, []);
-    };
-
-    $f.max = function (arr) {
-        if (isEmpty(arr)) {
-            return null;
-        }
-
-        return $f.foldR(arr, function (a, x) {
-            return x > a ? x : a;
-        }, dctor(arr).hd);
-    };
-
-    $f.min = function (arr) {
-        if (isEmpty(arr)) {
-            return null;
-        }
-
-        return $f.foldR(arr, function (a, x) {
-            return x < a ? x : a;
-        }, dctor(arr).hd);
-    };
-
-    $f.reverse = function (arr) {
-        return $f.foldL(arr, function (a, x) {
-            a.push(x);
-            return a;
-        }, []);
-    };
-
-    $f.member = function (arr, e) {
-        return $f.foldR(arr, function (a, x) {
-            return x === e ? true : a;
-        }, false);
-    };
-
-    $f.negateAll = function (arr) {
-        return $f.map(arr, function (x) {
-            return -x;
-        });
-    };
-
-    $f.flatten = function _flatten (arr) {
-        return $f.foldR(arr, function (a, x) {
-            a.pushArray(isArray(x) ? _flatten(x) : x);
-            return a;
-        }, []);
-    };
-
-    $f.or = function (arr) {
-        return $f.foldL(arr, function (a, x) {
-            return a || x;
-        }, true);
-    };
-
-    $f.insertionSort = function (arr) {
-        return $f.foldL(arr, insert, []);
-    };
-
-    $f.join = function (arr, sep) {
-        var count = 0;
-        sep = sep || ',';
-
-        return $f.foldR(arr, function (a, x) {
-            return count++ > 0 ? a + sep + x : x;
-        }, '');
     };
 
 })(typeof exports === 'undefined'? window.fold = {} : exports);
