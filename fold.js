@@ -27,9 +27,9 @@ if(typeof exports === 'undefined'){
         };
     };
 
-    var add = function (a, b) {
-        return a + b;
-    };
+    var add = function (a, b) { return a + b; };
+
+    var identity = function (x) { return x; };
 
     var fill = function (e, n) {
         var arr = [];
@@ -44,8 +44,6 @@ if(typeof exports === 'undefined'){
             return f(g(x));
         };
     };
-
-    var identity = function (x) { return x; };
 
     var insert = function _insert (arr, x) {
         if (isEmpty(arr)) {
