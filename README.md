@@ -2,7 +2,7 @@
 > A collection of useful functions using exclusively the 'fold'/'reduce' pattern
 
 ## Install
-```sh
+```
 $ npm install --save fold
 ```
 
@@ -344,3 +344,9 @@ Take just the elements at the nth position
 **Returns**: `Array`
 
 * * *
+
+## Examples
+Check the [test file](test.js)
+
+## License
+MIT © [Ossama Edbali](http://ossamaedbali.wordpress.com)
