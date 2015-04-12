@@ -1,5 +1,5 @@
 'use strict';
-var f = require('./fold'),
+var f = require('./foldc'),
     assert = require('assert'),
     range = function (a, b) {
         var arr = [];

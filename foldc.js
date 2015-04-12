@@ -4,7 +4,7 @@ if(typeof exports === 'undefined'){
     var exports = window.fold = {};
 }
 
-// === fold.js ===
+// === foldc.js ===
 // A collection of useful functions using exclusively the 'fold'/'reduce' pattern
 // Ossama Edbali
 

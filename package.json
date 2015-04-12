@@ -1,16 +1,15 @@
 {
-  "name": "fold",
+  "name": "fold-collection",
   "version": "0.0.1",
   "description": "Collection of useful functions using fold/reduce pattern",
   "license": "MIT",
-  "repository": "oss6/fold",
-  "author": {
-    "name": "Ossama Edbali",
-    "email": "ossedb@gmail.com",
-    "url": "ossamaedbali.wordpress.com"
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/oss6/fold"
   },
+  "author": "Ossama Edbali <ossedb@gmail.com> (ossamaedbali.wordpress.com)",
   "files": [
-    "fold.js"
+    "foldc.js"
   ],
   "scripts": {
     "test": "make test"
@@ -26,5 +25,10 @@
   ],
   "devDependencies": {
     "mocha": "~2.2.4"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/oss6/fold/issues"
+  },
+  "main": "foldc.js",
+  "dependencies": {}
 }
