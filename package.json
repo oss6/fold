@@ -1,6 +1,6 @@
 {
   "name": "fold-collection",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Collection of useful functions using fold/reduce pattern",
   "license": "MIT",
   "repository": {
