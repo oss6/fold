@@ -18,8 +18,11 @@
   "keywords": [
     "fold",
     "reduce",
+    "functional",
+    "functional programming",
+    "map",
     "pattern",
-    "functional"
+    "patterns"
   ],
   "devDependencies": {
     "mocha": "~2.2.4"

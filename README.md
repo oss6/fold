@@ -6,13 +6,38 @@
 $ npm install --save fold
 ```
 
-## Documentation
+## Documentation<a name="toc"></a>
 - [foldL](#foldL)
 - [foldR](#foldR)
+- [and](#and)
+- [any](#any)
+- [average](#average)
+- [composition](#composition)
+- [count](#count)
+- [drop](#drop)
+- [filter](#filter)
+- [flatten](#flatten)
+- [forEach](#forEach)
+- [insertionSort](#insertionSort)
+- [join](#join)
+- [map](#map)
+- [mapFusion](#mapFusion)
+- [max](#max)
+- [member](#member)
+- [min](#min)
+- [negateAll](#negateAll)
+- [or](#or)
+- [partition](#partition)
+- [removeConsecutive](#removeConsecutive)
+- [replicate](#replicate)
+- [reverse](#reverse)
+- [size](#size)
+- [sum](#sum)
+- [take](#take)
 
 * * *
 
-### foldL(arr, f, init)
+### **[⬆](#toc)** foldL(arr, f, init)<a name="foldL"></a>
 
 Higher-order function applied to arrays, based on the concept of accumulators
 (i.e. return a value from the accumulation). Left associative, tail recursive.
@@ -28,7 +53,7 @@ Higher-order function applied to arrays, based on the concept of accumulators
 **Returns**: `*`
 
 
-### foldR(arr, f, init)
+### **[⬆](#toc)** foldR(arr, f, init)<a name="foldR"></a>
 
 Higher-order function applied to arrays, based on the concept of accumulators
 (i.e. return a value from the accumulation). Right associative, not tail recursive.
@@ -44,7 +69,7 @@ Higher-order function applied to arrays, based on the concept of accumulators
 **Returns**: `*`, The accumulated value
 
 
-### and(arr)
+### **[⬆](#toc)** and(arr)<a name="and"></a>
 
 Applies the and operator to all the boolean expressions
 
@@ -55,7 +80,7 @@ Applies the and operator to all the boolean expressions
 **Returns**: `Boolean`
 
 
-### any(arr, f)
+### **[⬆](#toc)** any(arr, f)<a name="any"></a>
 
 Checks if a predicate is satisfied by any item
 
@@ -68,7 +93,7 @@ Checks if a predicate is satisfied by any item
 **Returns**: `Boolean`
 
 
-### average(arr)
+### **[⬆](#toc)** average(arr)<a name="average"></a>
 
 Gets the average of a list of numbers
 
@@ -79,7 +104,7 @@ Gets the average of a list of numbers
 **Returns**: `number`
 
 
-### composition(arr)
+### **[⬆](#toc)** composition(arr)<a name="composition"></a>
 
 Merge a list of functions into one function
 
@@ -90,7 +115,7 @@ Merge a list of functions into one function
 **Returns**: `function`
 
 
-### count(arr, e)
+### **[⬆](#toc)** count(arr, e)<a name="count"></a>
 
 Counts the number of occurrences of an element
 
@@ -103,7 +128,7 @@ Counts the number of occurrences of an element
 **Returns**: `Number`
 
 
-### drop(arr, n)
+### **[⬆](#toc)** drop(arr, n)<a name="drop"></a>
 
 Drops every 'n' times from 'arr'
 
@@ -116,7 +141,7 @@ Drops every 'n' times from 'arr'
 **Returns**: `Array`, New array with the items deleted
 
 
-### filter(arr, f)
+### **[⬆](#toc)** filter(arr, f)<a name="filter"></a>
 
 Filter the array based on a given property
 
@@ -129,7 +154,7 @@ Filter the array based on a given property
 **Returns**: `Array`, The filtered array
 
 
-### flatten(arr, deep)
+### **[⬆](#toc)** flatten(arr, deep)<a name="flatten"></a>
 
 Flatten an array of arrays
 
@@ -142,7 +167,7 @@ Flatten an array of arrays
 **Returns**: `Array`, The flattened array
 
 
-### forEach(arr, f)
+### **[⬆](#toc)** forEach(arr, f)<a name="forEach"></a>
 
 Performs a for loop
 
@@ -153,8 +178,7 @@ Performs a for loop
 **f**: `function`, The action to apply
 
 
-
-### insertionSort(arr)
+### **[⬆](#toc)** insertionSort(arr)<a name="insertionSort"></a>
 
 Performs an insertion sort
 
@@ -165,7 +189,7 @@ Performs an insertion sort
 **Returns**: `Array`, The sorted array
 
 
-### join(arr, optional)
+### **[⬆](#toc)** join(arr, optional)<a name="join"></a>
 
 Join the items of an array into a string
 
@@ -178,7 +202,7 @@ Join the items of an array into a string
 **Returns**: `String`, The resulting string
 
 
-### map(arr, f)
+### **[⬆](#toc)** map(arr, f)<a name="map"></a>
 
 Creates a new array with the results of calling a provided function on every element
 
@@ -191,7 +215,7 @@ Creates a new array with the results of calling a provided function on every ele
 **Returns**: `Array`, The new array
 
 
-### mapFusion(arr, fs)
+### **[⬆](#toc)** mapFusion(arr, fs)<a name="mapFusion"></a>
 
 Performs multiple maps
 
@@ -204,7 +228,7 @@ Performs multiple maps
 **Returns**: `Array`, The new array
 
 
-### max(arr)
+### **[⬆](#toc)** max(arr)<a name="max"></a>
 
 Get the maximum item
 
@@ -215,7 +239,7 @@ Get the maximum item
 **Returns**: `*`
 
 
-### member(arr, e)
+### **[⬆](#toc)** member(arr, e)<a name="member"></a>
 
 Checks whether 'e' is in 'arr'
 
@@ -228,7 +252,7 @@ Checks whether 'e' is in 'arr'
 **Returns**: `Boolean`
 
 
-### min(arr)
+### **[⬆](#toc)** min(arr)<a name="min"></a>
 
 Get the minimum item
 
@@ -239,7 +263,7 @@ Get the minimum item
 **Returns**: `*`
 
 
-### negateAll(arr)
+### **[⬆](#toc)** negateAll(arr)<a name="negateAll"></a>
 
 Negate all numbers in the array
 
@@ -250,7 +274,7 @@ Negate all numbers in the array
 **Returns**: `Array`
 
 
-### or(arr)
+### **[⬆](#toc)** or(arr)<a name="or"></a>
 
 Applies the or operator to all the boolean expressions
 
@@ -261,7 +285,7 @@ Applies the or operator to all the boolean expressions
 **Returns**: `Boolean`
 
 
-### partition(arr, f)
+### **[⬆](#toc)** partition(arr, f)<a name="partition"></a>
 
 Partitions the array the array over a property
 
@@ -274,7 +298,7 @@ Partitions the array the array over a property
 **Returns**: `Object`, Object with key 'T' corresponding to all elements satisfying the property. 'F' otherwise.
 
 
-### removeConsecutive(arr)
+### **[⬆](#toc)** removeConsecutive(arr)<a name="removeConsecutive"></a>
 
 Remove consecutive items from an array
 
@@ -285,7 +309,7 @@ Remove consecutive items from an array
 **Returns**: `Array`, The array without consecutive values
 
 
-### replicate(arr, n)
+### **[⬆](#toc)** replicate(arr, n)<a name="replicate"></a>
 
 Replicate the items 'n' times
 
@@ -298,7 +322,7 @@ Replicate the items 'n' times
 **Returns**: `Array`
 
 
-### reverse(arr)
+### **[⬆](#toc)** reverse(arr)<a name="reverse"></a>
 
 Reverse an array
 
@@ -309,7 +333,7 @@ Reverse an array
 **Returns**: `Array`, The reversed array
 
 
-### size(arr)
+### **[⬆](#toc)** size(arr)<a name="size"></a>
 
 Get the length of an array
 
@@ -320,7 +344,7 @@ Get the length of an array
 **Returns**: `Number`, Length
 
 
-### sum(arr)
+### **[⬆](#toc)** sum(arr)<a name="sum"></a>
 
 Get the sum of an array of numbers
 
@@ -331,7 +355,7 @@ Get the sum of an array of numbers
 **Returns**: `Number`
 
 
-### take(arr, n)
+### **[⬆](#toc)** take(arr, n)<a name="take"></a>
 
 Take just the elements at the nth position
 
@@ -342,6 +366,7 @@ Take just the elements at the nth position
 **n**: `Number`, nth position
 
 **Returns**: `Array`
+
 
 * * *
 
