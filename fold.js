@@ -149,9 +149,12 @@ if(typeof exports === 'undefined'){
         }, []);
     };
 
-    $f.flatten = function _flatten (arr) {
+    $f.flatten = function _flatten (arr, deep) {
+        if (deep === undefined)
+            deep = false;
+
         return $f.foldR(arr, function (a, x) {
-            a.pushArray(isArray(x) ? _flatten(x) : x);
+            a.pushArray(deep && isArray(x) ? _flatten(x) : x);
             return a;
         }, []);
     };
@@ -174,6 +177,8 @@ if(typeof exports === 'undefined'){
     };
 
     $f.map = function (arr, f) {
+        f = f || identity;
+
         return $f.foldR(arr, function (a, x) {
             a.push(f(x));
             return a;
@@ -219,7 +224,7 @@ if(typeof exports === 'undefined'){
     $f.or = function (arr) {
         return $f.foldL(arr, function (a, x) {
             return a || x;
-        }, true);
+        }, false);
     };
 
     $f.partition = function (arr, f) {
@@ -263,7 +268,7 @@ if(typeof exports === 'undefined'){
 
     $f.replicate = function (arr, n) {
         return $f.foldR(arr, function (a, x) {
-            a.push(fill(x, n));
+            a.pushArray(fill(x, n));
 
             return a;
         }, []);
