@@ -3,7 +3,7 @@
 
 ## Install
 ```
-$ npm install --save fold
+$ npm install --save fold-collection
 ```
 
 ## Documentation
