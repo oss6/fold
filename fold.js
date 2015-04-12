@@ -4,11 +4,15 @@ if(typeof exports === 'undefined'){
     var exports = window.fold = {};
 }
 
-// --- fold.js ---
+// === fold.js ===
 // A collection of useful functions using exclusively the 'fold'/'reduce' pattern
 // Ossama Edbali
 
 (function ($f) {
+
+    // ==========================
+    // === INTERNAL FUNCTIONS ===
+    // ==========================
 
     var isEmpty = function (arr) {
         return typeof arr === 'undefined' || arr.length === 0;
@@ -18,13 +22,8 @@ if(typeof exports === 'undefined'){
         return Object.prototype.toString.call(arr) === '[object Array]';
     };
 
-    // Array destructor (head and list)
+    // Array destructor (head and list) --> assumes that arr is not empty
     var dctor = function (arr) {
-        if (isEmpty(arr)) {
-            // throw exception
-        }
-
-        // Check if array is not empty
         return {
             'hd': arr[0],
             'tl': arr.slice(1)
@@ -78,6 +77,10 @@ if(typeof exports === 'undefined'){
             this.push(toPush[i]);
         }
     };
+
+    // ========================
+    // === PUBLIC INTERFACE ===
+    // ========================
 
     /**
      * Higher-order function applied to arrays, based on the concept of accumulators
