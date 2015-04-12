@@ -6,7 +6,7 @@
 $ npm install --save fold
 ```
 
-## Documentation<a name="toc"></a>
+## Documentation
 - [foldL](#foldL)
 - [foldR](#foldR)
 - [and](#and)
@@ -37,7 +37,7 @@ $ npm install --save fold
 
 * * *
 
-### **[⬆](#toc)** foldL(arr, f, init)<a name="foldL"></a>
+### **[⬆](#documentation)** foldL(arr, f, init)<a name="foldL"></a>
 
 Higher-order function applied to arrays, based on the concept of accumulators
 (i.e. return a value from the accumulation). Left associative, tail recursive.
@@ -53,7 +53,7 @@ Higher-order function applied to arrays, based on the concept of accumulators
 **Returns**: `*`
 
 
-### **[⬆](#toc)** foldR(arr, f, init)<a name="foldR"></a>
+### **[⬆](#documentation)** foldR(arr, f, init)<a name="foldR"></a>
 
 Higher-order function applied to arrays, based on the concept of accumulators
 (i.e. return a value from the accumulation). Right associative, not tail recursive.
@@ -69,7 +69,7 @@ Higher-order function applied to arrays, based on the concept of accumulators
 **Returns**: `*`, The accumulated value
 
 
-### **[⬆](#toc)** and(arr)<a name="and"></a>
+### **[⬆](#documentation)** and(arr)<a name="and"></a>
 
 Applies the and operator to all the boolean expressions
 
@@ -80,7 +80,7 @@ Applies the and operator to all the boolean expressions
 **Returns**: `Boolean`
 
 
-### **[⬆](#toc)** any(arr, f)<a name="any"></a>
+### **[⬆](#documentation)** any(arr, f)<a name="any"></a>
 
 Checks if a predicate is satisfied by any item
 
@@ -93,7 +93,7 @@ Checks if a predicate is satisfied by any item
 **Returns**: `Boolean`
 
 
-### **[⬆](#toc)** average(arr)<a name="average"></a>
+### **[⬆](#documentation)** average(arr)<a name="average"></a>
 
 Gets the average of a list of numbers
 
@@ -104,7 +104,7 @@ Gets the average of a list of numbers
 **Returns**: `number`
 
 
-### **[⬆](#toc)** composition(arr)<a name="composition"></a>
+### **[⬆](#documentation)** composition(arr)<a name="composition"></a>
 
 Merge a list of functions into one function
 
@@ -115,7 +115,7 @@ Merge a list of functions into one function
 **Returns**: `function`
 
 
-### **[⬆](#toc)** count(arr, e)<a name="count"></a>
+### **[⬆](#documentation)** count(arr, e)<a name="count"></a>
 
 Counts the number of occurrences of an element
 
@@ -128,7 +128,7 @@ Counts the number of occurrences of an element
 **Returns**: `Number`
 
 
-### **[⬆](#toc)** drop(arr, n)<a name="drop"></a>
+### **[⬆](#documentation)** drop(arr, n)<a name="drop"></a>
 
 Drops every 'n' times from 'arr'
 
@@ -141,7 +141,7 @@ Drops every 'n' times from 'arr'
 **Returns**: `Array`, New array with the items deleted
 
 
-### **[⬆](#toc)** filter(arr, f)<a name="filter"></a>
+### **[⬆](#documentation)** filter(arr, f)<a name="filter"></a>
 
 Filter the array based on a given property
 
@@ -154,7 +154,7 @@ Filter the array based on a given property
 **Returns**: `Array`, The filtered array
 
 
-### **[⬆](#toc)** flatten(arr, deep)<a name="flatten"></a>
+### **[⬆](#documentation)** flatten(arr, deep)<a name="flatten"></a>
 
 Flatten an array of arrays
 
@@ -167,7 +167,7 @@ Flatten an array of arrays
 **Returns**: `Array`, The flattened array
 
 
-### **[⬆](#toc)** forEach(arr, f)<a name="forEach"></a>
+### **[⬆](#documentation)** forEach(arr, f)<a name="forEach"></a>
 
 Performs a for loop
 
@@ -178,7 +178,7 @@ Performs a for loop
 **f**: `function`, The action to apply
 
 
-### **[⬆](#toc)** insertionSort(arr)<a name="insertionSort"></a>
+### **[⬆](#documentation)** insertionSort(arr)<a name="insertionSort"></a>
 
 Performs an insertion sort
 
@@ -189,7 +189,7 @@ Performs an insertion sort
 **Returns**: `Array`, The sorted array
 
 
-### **[⬆](#toc)** join(arr, optional)<a name="join"></a>
+### **[⬆](#documentation)** join(arr, optional)<a name="join"></a>
 
 Join the items of an array into a string
 
@@ -202,7 +202,7 @@ Join the items of an array into a string
 **Returns**: `String`, The resulting string
 
 
-### **[⬆](#toc)** map(arr, f)<a name="map"></a>
+### **[⬆](#documentation)** map(arr, f)<a name="map"></a>
 
 Creates a new array with the results of calling a provided function on every element
 
@@ -215,7 +215,7 @@ Creates a new array with the results of calling a provided function on every ele
 **Returns**: `Array`, The new array
 
 
-### **[⬆](#toc)** mapFusion(arr, fs)<a name="mapFusion"></a>
+### **[⬆](#documentation)** mapFusion(arr, fs)<a name="mapFusion"></a>
 
 Performs multiple maps
 
@@ -228,7 +228,7 @@ Performs multiple maps
 **Returns**: `Array`, The new array
 
 
-### **[⬆](#toc)** max(arr)<a name="max"></a>
+### **[⬆](#documentation)** max(arr)<a name="max"></a>
 
 Get the maximum item
 
@@ -239,7 +239,7 @@ Get the maximum item
 **Returns**: `*`
 
 
-### **[⬆](#toc)** member(arr, e)<a name="member"></a>
+### **[⬆](#documentation)** member(arr, e)<a name="member"></a>
 
 Checks whether 'e' is in 'arr'
 
@@ -252,7 +252,7 @@ Checks whether 'e' is in 'arr'
 **Returns**: `Boolean`
 
 
-### **[⬆](#toc)** min(arr)<a name="min"></a>
+### **[⬆](#documentation)** min(arr)<a name="min"></a>
 
 Get the minimum item
 
@@ -263,7 +263,7 @@ Get the minimum item
 **Returns**: `*`
 
 
-### **[⬆](#toc)** negateAll(arr)<a name="negateAll"></a>
+### **[⬆](#documentation)** negateAll(arr)<a name="negateAll"></a>
 
 Negate all numbers in the array
 
@@ -274,7 +274,7 @@ Negate all numbers in the array
 **Returns**: `Array`
 
 
-### **[⬆](#toc)** or(arr)<a name="or"></a>
+### **[⬆](#documentation)** or(arr)<a name="or"></a>
 
 Applies the or operator to all the boolean expressions
 
@@ -285,7 +285,7 @@ Applies the or operator to all the boolean expressions
 **Returns**: `Boolean`
 
 
-### **[⬆](#toc)** partition(arr, f)<a name="partition"></a>
+### **[⬆](#documentation)** partition(arr, f)<a name="partition"></a>
 
 Partitions the array the array over a property
 
@@ -298,7 +298,7 @@ Partitions the array the array over a property
 **Returns**: `Object`, Object with key 'T' corresponding to all elements satisfying the property. 'F' otherwise.
 
 
-### **[⬆](#toc)** removeConsecutive(arr)<a name="removeConsecutive"></a>
+### **[⬆](#documentation)** removeConsecutive(arr)<a name="removeConsecutive"></a>
 
 Remove consecutive items from an array
 
@@ -309,7 +309,7 @@ Remove consecutive items from an array
 **Returns**: `Array`, The array without consecutive values
 
 
-### **[⬆](#toc)** replicate(arr, n)<a name="replicate"></a>
+### **[⬆](#documentation)** replicate(arr, n)<a name="replicate"></a>
 
 Replicate the items 'n' times
 
@@ -322,7 +322,7 @@ Replicate the items 'n' times
 **Returns**: `Array`
 
 
-### **[⬆](#toc)** reverse(arr)<a name="reverse"></a>
+### **[⬆](#documentation)** reverse(arr)<a name="reverse"></a>
 
 Reverse an array
 
@@ -333,7 +333,7 @@ Reverse an array
 **Returns**: `Array`, The reversed array
 
 
-### **[⬆](#toc)** size(arr)<a name="size"></a>
+### **[⬆](#documentation)** size(arr)<a name="size"></a>
 
 Get the length of an array
 
@@ -344,7 +344,7 @@ Get the length of an array
 **Returns**: `Number`, Length
 
 
-### **[⬆](#toc)** sum(arr)<a name="sum"></a>
+### **[⬆](#documentation)** sum(arr)<a name="sum"></a>
 
 Get the sum of an array of numbers
 
@@ -355,7 +355,7 @@ Get the sum of an array of numbers
 **Returns**: `Number`
 
 
-### **[⬆](#toc)** take(arr, n)<a name="take"></a>
+### **[⬆](#documentation)** take(arr, n)<a name="take"></a>
 
 Take just the elements at the nth position
 
