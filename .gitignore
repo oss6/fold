@@ -1,5 +1,2 @@
-# WebStorm
-.idea
-
-# Node
-node_modules
+node_modules/
+fold.out.js
