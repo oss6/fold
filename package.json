@@ -36,7 +36,7 @@
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.1",
-    "mocha": "~7.1.2"
+    "mocha": "~10.2.0"
   },
   "bugs": {
     "url": "https://github.com/oss6/fold/issues"
